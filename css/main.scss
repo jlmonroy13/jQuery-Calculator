@@ -1,3 +1,6 @@
+/*======================================================
+Joonik.com written by - Jorge Luis Monroy. 2016 
+=====================================================*/
 #calculator {
 	padding: 30px 0;
 	.container {
@@ -22,8 +25,11 @@
 			@media(max-width: 460px) {
 				min-width: 341px; 
 			}
+			@media(max-width: 400px) {
+				min-width: 300px; 
+			}
 			.row {
-				&:first-child {
+				&:first-child { 
 					background-color: #F6F6F6;
 					padding: 20px 0;
 					border-top-right-radius: 12px;
@@ -31,7 +37,7 @@
 					-webkit-box-shadow: inset 0px 1px 12px -2px rgba(0,0,0,0.75);
 					-moz-box-shadow: inset 0px 1px 12px -2px rgba(0,0,0,0.75);
 					box-shadow: inset 0px 1px 12px -2px rgba(0,0,0,0.75);
-					span {
+					span#display {
 						background-color: #B7C8CC;
 						color: #091312;
 						display: block;
@@ -45,6 +51,9 @@
 						border-radius: 8px;
 						border: 5px solid #E8E8E9;
 						border-top: 5px solid #BDBDBD;
+						.no-show {
+							visibility: hidden;
+						}
 					}
 				}
 				&:last-child {
@@ -58,7 +67,7 @@
 					box-shadow: inset 0px -2px 12px -2px rgba(0,0,0,0.75);
 					>div {
 						padding: 0;
-						text-align: right;
+						text-align: right; 
 						button {
 							display: inline-block;
 							width: 80px;
@@ -69,6 +78,9 @@
 							@media(max-width: 460px) {
 								width: 70px;
 							}
+							@media(max-width: 400px) {
+								width: 59px;
+							}
 						}
 						.cero {
 						    width: 174px;
@@ -76,6 +88,9 @@
 						    padding-left: 33px;
 						    @media(max-width: 460px) {
 								width: 154px;
+							}
+							@media(max-width: 400px) {
+								width: 132px;
 							}
 						}
 						.equal {
@@ -89,6 +104,10 @@
 						}
 						.btn-wCalculator {
 							background-color: #EEEEEE;
+						}
+						.operators {
+							background: #88A991;
+							color: #fff;
 						}
 						&:last-child {
 							text-align: left;

@@ -1,3 +1,6 @@
+/*======================================================
+Joonik.com written by - Jorge Luis Monroy. 2016 
+=====================================================*/
 #calculator {
   padding: 30px 0; }
   #calculator .container h1 {
@@ -19,6 +22,9 @@
     @media (max-width: 460px) {
       #calculator .container .body-calculator {
         min-width: 341px; } }
+    @media (max-width: 400px) {
+      #calculator .container .body-calculator {
+        min-width: 300px; } }
     #calculator .container .body-calculator .row:first-child {
       background-color: #F6F6F6;
       padding: 20px 0;
@@ -27,7 +33,7 @@
       -webkit-box-shadow: inset 0px 1px 12px -2px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: inset 0px 1px 12px -2px rgba(0, 0, 0, 0.75);
       box-shadow: inset 0px 1px 12px -2px rgba(0, 0, 0, 0.75); }
-      #calculator .container .body-calculator .row:first-child span {
+      #calculator .container .body-calculator .row:first-child span#display {
         background-color: #B7C8CC;
         color: #091312;
         display: block;
@@ -41,6 +47,8 @@
         border-radius: 8px;
         border: 5px solid #E8E8E9;
         border-top: 5px solid #BDBDBD; }
+        #calculator .container .body-calculator .row:first-child span#display .no-show {
+          visibility: hidden; }
     #calculator .container .body-calculator .row:last-child {
       background-color: #D2D2D2;
       padding: 10px 20px;
@@ -63,6 +71,9 @@
           @media (max-width: 460px) {
             #calculator .container .body-calculator .row:last-child > div button {
               width: 70px; } }
+          @media (max-width: 400px) {
+            #calculator .container .body-calculator .row:last-child > div button {
+              width: 59px; } }
         #calculator .container .body-calculator .row:last-child > div .cero {
           width: 174px;
           text-align: left;
@@ -70,6 +81,9 @@
           @media (max-width: 460px) {
             #calculator .container .body-calculator .row:last-child > div .cero {
               width: 154px; } }
+          @media (max-width: 400px) {
+            #calculator .container .body-calculator .row:last-child > div .cero {
+              width: 132px; } }
         #calculator .container .body-calculator .row:last-child > div .equal {
           height: 80px;
           background-color: #E27142;
@@ -79,7 +93,12 @@
           color: #fff; }
         #calculator .container .body-calculator .row:last-child > div .btn-wCalculator {
           background-color: #EEEEEE; }
+        #calculator .container .body-calculator .row:last-child > div .operators {
+          background: #88A991;
+          color: #fff; }
         #calculator .container .body-calculator .row:last-child > div:last-child {
           text-align: left; }
           #calculator .container .body-calculator .row:last-child > div:last-child > div {
             padding: 0; }
+
+/*# sourceMappingURL=main.css.map */
