@@ -1,0 +1,92 @@
+#calculator {
+	padding: 30px 0;
+	.container {
+		h1 {
+			text-align: center;
+			margin-bottom: 0;
+		}
+		h2 {
+			text-align: center;
+			margin: 0 0 30px 0;
+		}
+		.body-calculator {
+			width: 60%;
+			min-width: 714px;
+			margin: 0 auto;
+			-webkit-box-shadow: 5px 4px 9px -2px rgba(0,0,0,0.69);
+			-moz-box-shadow: 5px 4px 9px -2px rgba(0,0,0,0.69);
+			box-shadow: 5px 4px 9px -2px rgba(0,0,0,0.69);
+			.row {
+				&:first-child {
+					background-color: #F6F6F6;
+					padding: 20px 0;
+					border-top-right-radius: 12px;
+					border-top-left-radius: 12px;
+					-webkit-box-shadow: inset 0px 1px 12px -2px rgba(0,0,0,0.75);
+					-moz-box-shadow: inset 0px 1px 12px -2px rgba(0,0,0,0.75);
+					box-shadow: inset 0px 1px 12px -2px rgba(0,0,0,0.75);
+					span {
+						background-color: #B7C8CC;
+						color: #091312;
+						display: block;
+						width: 88%;
+						height: 73px;
+						margin: 0 auto;
+						line-height: 0.9;
+						font-size: 3.5714em;
+						text-align: right;
+						padding: 5px;
+						border-radius: 8px;
+						border: 5px solid #E8E8E9;
+						border-top: 5px solid #BDBDBD;
+					}
+				}
+				&:last-child {
+					background-color: #D2D2D2;
+					padding: 10px 20px;
+					text-align: center;
+					border-bottom-right-radius: 12px;
+					border-bottom-left-radius: 12px;
+					-webkit-box-shadow: inset 0px -2px 12px -2px rgba(0,0,0,0.75);
+					-moz-box-shadow: inset 0px -2px 12px -2px rgba(0,0,0,0.75);
+					box-shadow: inset 0px -2px 12px -2px rgba(0,0,0,0.75);
+					>div {
+						padding: 0;
+						text-align: right;
+						button {
+							display: inline-block;
+							width: 80px;
+							height: 35px;
+							margin: 10px;
+							margin: 5px;
+							border-radius: 12px;
+						}
+						.cero {
+						    width: 174px;
+						    text-align: left;
+						    padding-left: 33px;
+						}
+						.equal {
+						    height: 80px;
+						    background-color: #E27142;
+						    color: #fff;
+						}
+						.btn-gCalculator {
+							background-color: #939393;
+							color: #fff;
+						}
+						.btn-wCalculator {
+							background-color: #EEEEEE;
+						}
+						&:last-child {
+							text-align: left;
+							>div {
+								padding: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
