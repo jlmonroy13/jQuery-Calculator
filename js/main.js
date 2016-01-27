@@ -16,7 +16,8 @@ $(document).ready(function() {
 	var num = '';
 	//Mostrar números en el display
 	$('.btn-num').on('click', function() {
-		if (num.length<9) {
+		clearInterval(check);
+		if ( (num.length<9) && ($('.equal').data('id') === 0)) {
 			num += $(this).text(); 
 			//Si llega presionar el botón ".", agregas el punto y deshabilitas el botón 
 			if ($(this).text() === '.') {
@@ -33,7 +34,11 @@ $(document).ready(function() {
 			}
 			$('#display span').removeClass('no-show');
 			$('#display span').text(num);
-			clearInterval(check);
+		}//En el caso que se presione un número después de haber presionado 'igual'
+		if ($('.equal').data('id') === 1) {
+			num = '' + $(this).text();
+			$('#display span').text(num);
+			$('.equal').data('id', 0);
 		}
 	});
 	//Borrar display
@@ -43,18 +48,24 @@ $(document).ready(function() {
 		titilar();
 		$('.btn-point').prop('disabled',false);
 		$('.cero').prop('disabled',false);
+		$('.dosPasos').removeClass('operators');
+		$('.equal').data('id', 0);
 	});
 	//Borrar ultimo número
 	$('.btn-lastChar').on('click', function() {
 		if(num.length>0) {
 			num = num.slice(0,-1);
 			$('#display span').text(num);
-			if (num.length == 0)
+			if (num.length == 0) {
 				$('.btn-clear').click();
+			}
 		}
 	});
 	//Sumar
 	$('.dosPasos').on('click', function() {
+		if (num === '') {
+			$('.btn-num.cero').click();
+		}
 		sum1 = num;
 		num = '';
 		$('#display span').text(sum1);
@@ -74,8 +85,15 @@ $(document).ready(function() {
 		if( $('.btn-multiplicar').hasClass('operators') ) {
 			sumTotal = parseFloat(sum1) * parseFloat($('#display span').text());
 		}
-		num = sumTotal;
+		if( $('.btn-exponente').hasClass('operators') ) {
+			sumTotal = Math.pow( parseFloat(sum1) , parseFloat($('#display span').text()));
+		}
+		if( $('.btn-raiz').hasClass('operators') ) {
+			sumTotal = Math.pow( parseFloat(sum1) , 1 / parseFloat($('#display span').text()));
+		}
+		num = '' + sumTotal;
 		$('#display span').text(sumTotal);
-		$('.dosPasos').removeClass('operators');	
+		$('.dosPasos').removeClass('operators');
+		$(this).data('id', 1);	
 	});
 });
