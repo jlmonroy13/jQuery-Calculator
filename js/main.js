@@ -5,19 +5,19 @@ var check;
 var sumTotal;
 var sum1;
 // Titilar el cursor
-function titilar () {
-	clearInterval(check);
-	check = setInterval(function(){ 
-		$('#display span').toggleClass('no-show'); 
-	}, 500);
-}
+// function titilar () {
+// 	clearInterval(check);
+// 	check = setInterval(function(){ 
+// 		$('#display span').toggleClass('no-show'); 
+// 	}, 500);
+// }
 $(document).ready(function() { 
-	titilar();
+	// titilar();
 	var num = '';
 	//Mostrar números en el display
 	$('.btn-num').on('click', function() {
-		clearInterval(check);
-		if ( (num.length<9) && ($('.equal').data('id') === 0)) {
+		// clearInterval(check);
+		if ( (num.length<9) && ($('.equal').data('id') === 0) && ($('.dosPasos').data('id') === 0)) {
 			num += $(this).text(); 
 			//Si llega presionar el botón ".", agregas el punto y deshabilitas el botón 
 			if ($(this).text() === '.') {
@@ -26,26 +26,32 @@ $(document).ready(function() {
 				}
 				$(this).prop('disabled', true);
 			}
+			$('#display span').text(num);
 			if ($(this).text() === '0') {
 				if (num === '0') {
-					num = '0.';
+					num = '';
+					$('#display span').text('0');
 				}
-				$('.btn-point').prop('disabled', true);
 			}
-			$('#display span').removeClass('no-show');
-			$('#display span').text(num);
+			// $('#display span').removeClass('no-show');
 		}//En el caso que se presione un número después de haber presionado 'igual'
 		if ($('.equal').data('id') === 1) {
 			num = '' + $(this).text();
 			$('#display span').text(num);
 			$('.equal').data('id', 0);
 		}
+		if ($('.dosPasos').data('id') === 1) {
+			num = '' + $(this).text();
+			$('#display span').text(num);
+			$('.dosPasos').data('id', 0);
+		}
+		
 	});
 	//Borrar display
 	$('.btn-clear').on('click', function() {
 		num = '';
-		$('#display span').text('|');
-		titilar();
+		$('#display span').text('0');
+		// titilar();
 		$('.btn-point').prop('disabled',false);
 		$('.cero').prop('disabled',false);
 		$('.dosPasos').removeClass('operators');
@@ -63,13 +69,20 @@ $(document).ready(function() {
 	});
 	//Sumar
 	$('.dosPasos').on('click', function() {
-		if (num === '') {
-			$('.btn-num.cero').click();
+		if ( num === '' || ($('#display span').text() === '0') ) {
+			sum1 = '0';
+			num = "";
+			$('#display span').text('0');
+			$(this).addClass('operators');
+			$('.dosPasos').data('id', 1);
+			// clearInterval(check);
 		}
-		sum1 = num;
-		num = '';
-		$('#display span').text(sum1);
-		$(this).addClass('operators');
+		if ($('#display span').text() !== '0') {
+			sum1 = num;
+			num = '';
+			$('#display span').text(sum1);
+			$(this).addClass('operators');
+		}	
 	});
 	//Obtener Resultado
 	$('.equal').on('click', function() {
