@@ -5,6 +5,10 @@ var check;
 var sumTotal;
 var sum1;
 var key;
+var mem = 0;
+var parentesisO= 1;
+var idparentesis;
+var lastTotal;
 // Titilar el cursor
 // function titilar () {
 // 	clearInterval(check);
@@ -85,11 +89,41 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//Botón agregar a memoria 
+	$('.addM').on('click', function() {
+		mem += parseFloat($('#display span').text());
+		if (mem > 0 || mem < 0) {
+			$('.showM').addClass('operators');
+		}
+		else if (mem === 0) {
+			$('.showM').removeClass('operators');
+		}
+	});
+	//Botón restar a memoria 
+	$('.substractM').on('click', function() {
+		mem -= parseFloat($('#display span').text());
+		if (mem > 0 || mem < 0) {
+			$('.showM').addClass('operators');
+		}
+		else if (mem === 0) {
+			$('.showM').removeClass('operators');
+		}
+	});
+	//Botón de mostrar en pantalla el valor en memoria 
+	$('.showM').on('click', function() {
+		$('#display span').text(mem);
+		num = mem;
+	});
+	//Borrar valor en memoria
+	$('.clearM').on('click', function() {
+		mem = 0;
+		$('.showM').removeClass('operators');
+	});
 	//Operaciones un paso 
 	$('.unPaso').on('click', function() {
 		$(this).addClass('operators');
 		$('.equal').click();
-
+		idparentesis = 1;
 	});
 	//Botón euler
 	$('.euler').on('click', function() {
@@ -122,6 +156,69 @@ $(document).ready(function() {
 			$(this).addClass('operators');
 		}	
 	});
+
+	//Abrir parentesis 
+	$('.parentesisO').on('click', function() {
+		parentesisO = $('#display span').text();
+		num = '';
+		if($('.btn-sumar').hasClass('operators')) {
+			idparentesis = 1;
+			$('.btn-sumar').removeClass('operators');
+		}
+		else if($('.btn-restar').hasClass('operators')) {
+			idparentesis = 2;
+			$('.btn-restar').removeClass('operators');
+		}
+		else if($('.btn-multiplicar').hasClass('operators')) {
+			idparentesis = 2;
+			$('.btn-multiplicar').removeClass('operators');
+		}
+		else if($('.btn-dividir').hasClass('operators')) {
+			idparentesis = 2;
+			$('.btn-dividir').removeClass('operators');
+		}
+	});
+	//Cerrar parentesis 
+	$('.parentesisC').on('click', function() {
+		if ( idparentesis !== 1 ) {
+			$('.equal').click();
+			if (idparentesis = 1) {
+				lastTotal = parseFloat(parentesisO) + parseFloat($('#display span').text());
+			}
+			else if (idparentesis = 2) {
+				lastTotal = parseFloat(parentesisO) - parseFloat($('#display span').text());
+			}
+			else if (idparentesis = 3) {
+				lastTotal = parseFloat(parentesisO) * parseFloat($('#display span').text());
+			}
+			else if (idparentesis = 4) {
+				lastTotal = parseFloat(parentesisO) / parseFloat($('#display span').text());
+			}
+			$('#display span').text(lastTotal);
+			num = '' + lastTotal;
+			lastTotal = 0;
+		}
+		if ( idparentesis === 1 ) {
+			if (idparentesis = 1) {
+				lastTotal = parseFloat(parentesisO) + parseFloat($('#display span').text());
+			}
+			else if (idparentesis = 2) {
+				lastTotal = parseFloat(parentesisO) - parseFloat($('#display span').text());
+			}
+			else if (idparentesis = 3) {
+				lastTotal = parseFloat(parentesisO) * parseFloat($('#display span').text());
+			}
+			else if (idparentesis = 4) {
+				lastTotal = parseFloat(parentesisO) / parseFloat($('#display span').text());
+			}
+			$('#display span').text(lastTotal);
+			num = '' + lastTotal;
+			lastTotal = 0;
+			idparentesis = 0;
+		}
+	});
+
+
 	//Obtener Resultado
 	$('.equal').on('click', function() {
 		if( $('.btn-sumar').hasClass('operators') ) {
@@ -191,6 +288,7 @@ $(document).ready(function() {
 		$('#display span').text(sumTotal);
 		$('.dosPasos').removeClass('operators');
 		$('.unPaso').removeClass('operators');
-		$(this).data('id', 1);	
+		$(this).data('id', 1);
+		sumTotal = 0;	
 	});
 });
